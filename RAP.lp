@@ -1,4 +1,4 @@
-\ Model BASEBALL
+\ Model RAP
 \ LP format - for model browsing. Use MPS format to capture full model detail.
 Maximize
   53 assign[Carlos,Tester] + 27 assign[Carlos,JavaDeveloper]
@@ -7,14 +7,23 @@ Maximize
    + 53 assign[Monika,Tester] + 73 assign[Monika,JavaDeveloper]
    + 47 assign[Monika,Architect]
 Subject To
- job[강릉]: = 1
- job[춘천]: = 1
- job[진주]: = 1
- job[구미]: = 1
- resource[잠실구장]: <= 1
- resource[부산구장]: <= 1
- resource[인천구장]: <= 1
- resource[대구구장]: <= 1
- resource[광주구장]: <= 1
+ job[Tester]: assign[Carlos,Tester] + assign[Joe,Tester]
+   + assign[Monika,Tester] = 1
+ job[JavaDeveloper]: assign[Carlos,JavaDeveloper]
+   + assign[Joe,JavaDeveloper] + assign[Monika,JavaDeveloper] = 1
+ job[Architect]: assign[Carlos,Architect] + assign[Joe,Architect]
+   + assign[Monika,Architect] = 1
+ job[Tester]: assign[Carlos,Tester] + assign[Joe,Tester]
+   + assign[Monika,Tester] = 1
+ job[JavaDeveloper]: assign[Carlos,JavaDeveloper]
+   + assign[Joe,JavaDeveloper] + assign[Monika,JavaDeveloper] = 1
+ job[Architect]: assign[Carlos,Architect] + assign[Joe,Architect]
+   + assign[Monika,Architect] = 1
+ resource[Carlos]: assign[Carlos,Tester] + assign[Carlos,JavaDeveloper]
+   + assign[Carlos,Architect] <= 1
+ resource[Joe]: assign[Joe,Tester] + assign[Joe,JavaDeveloper]
+   + assign[Joe,Architect] <= 1
+ resource[Monika]: assign[Monika,Tester] + assign[Monika,JavaDeveloper]
+   + assign[Monika,Architect] <= 1
 Bounds
 End
